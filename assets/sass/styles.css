@@ -135,6 +135,10 @@ main .modal .modalContent {
           align-items: center;
 }
 
+main .modal .modalContent .modalInput {
+  display: none;
+}
+
 main .modal img {
   max-width: 400px;
   padding: 1em 2em;

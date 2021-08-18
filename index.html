@@ -35,8 +35,11 @@
         <div class="modal">
             <div class="modalContent">
                 <img src="./assets/sass/images/Sumit Trimmed Paths.svg" alt="Logo" class="topLogo">
-                <h1 class="modalText">Choose Files</h1>
-                <input class="modalInput" type="file" name="myFile[]" accept=".mp3,.mp4" multiple/>
+                <div class="fileInputArea">
+                    <button class="fileInput">Choose Files</button>
+                    <span class="filesSelected">No file chosen</span>
+                </div>
+                <input class="modalInput" type="file" name="myFile[]" accept=".mp3,.mp4" multiple>
             </div>
         </div>
     </main>
