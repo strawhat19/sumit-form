@@ -5,8 +5,81 @@
     --gray: #323232;
     --orange: #f8a118;
     --gradient: linear-gradient(var(--orange),var(--yellow));
-}
 
+    --hue: 225;
+    --saturation: 40;
+    --lightness: 65;
+    --sidebar-width: 188px;
+    --sidebar-fixed-height: 700px;
+    --control-bar-height: 29px;
+    --control-space-between: 1.5rem;
+    --button-bg: var(--gray-dark-4);
+    --button-color: white;
+    --button-icon: currentColor;
+    --button-hover-bg: var(--gray-dark-3);
+    --button-hover-color: var(--button-color);
+    --button-hover-icon: var(--button-icon);
+    --button-default-bg: var(--button-bg);
+    --button-default-color: var(--button-color);
+    --button-border-width: 3px;
+    --button-border-radius: 4px;
+    --button-margin-block: 1px;
+    --button-margin-inline: 10px;
+    --button-padding-inline: 16px;
+    --button-padding-block: 10px;
+    --font-family-normal: Lato, Lucida Grande, Lucida Sans Unicode, Tahoma, Sans-Serif;
+    --font-family-header: Telefon Black, Sans-Serif;
+    --font-family-header-alt: Telefon, Sans-Serif;
+    --font-family-monospace: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    --green: #47cf73;
+    --green-light: #d3ffe1;
+    --green-dark: #248c46;
+    --yellow: #ffdd40;
+    --yellow-light: #f9e9a2;
+    --yellow-dark: #d9b200;
+    --purple: #ae63e4;
+    --purple-light: #be9fe4;
+    --purple-dark: #754cac;
+    --red: #ff3c41;
+    --red-very-light: #ffcfcb;
+    --red-light: #f19994;
+    --red-dark: #a00808;
+    --blue: #0ebeff;
+    --blue-light: #76daff;
+    --blue-dark: #3d88c3;
+    --gray: #9b9dad;
+    --gray-light-6: #f1f1f3;
+    --gray-light-5: #e3e4e8;
+    --gray-light-4: #d5d7de;
+    --gray-light-3: #c7c9d3;
+    --gray-light-2: #b7bbc8;
+    --gray-light-1: #aaaebc;
+    --gray-dark-1: #868ca0;
+    --gray-dark-2: #717790;
+    --gray-dark-3: #5a5f73;
+    --gray-dark-4: #444857;
+    --gray-dark-5: #2c303a;
+    --gray-dark-6: #1e1f26;
+    --gray-dark-7: #131417;
+    --gray-dark-8: #0a0a0c;
+    --gray-dark-9: #010101;
+
+    // Neu
+    --neu: #636363;
+    --neumorphic-reach: 30;
+    --neumorphic-blur: 60;
+    --neumorphic-intensity: 0.25;
+    --border-width: 0;
+    --border-intensity: 0.1;
+    --border-radius: 25;
+    --x: calc(var(--neumorphic-reach) * 1px);
+    --y: calc(var(--neumorphic-reach) * 1px);
+    --blur: calc(var(--neumorphic-blur) * 1px);
+    --x2: calc(var(--neumorphic-reach) * -1px);
+    --y2: calc(var(--neumorphic-reach) * -1px);
+
+    --neugray: #797a88;
+}
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -18,8 +91,50 @@ body {
     display: flex;
     background: white;
     color: black;
-    font-family: 'Heebo';
+    font-family: 'Heebo' !important;
     flex-direction: column;
+}
+
+// Global Variable Styles
+@mixin angledBoxes {
+    z-index: 5;
+    background: #ffffff;
+    font-weight: 600;
+    font-style: italic;
+    border-radius: 0px;
+    text-transform: uppercase;
+    -webkit-transform: skewx(20deg);
+    transform: skewx(20deg);
+    cursor: pointer;
+    top: -6px;
+    transition: 500ms ease-in-out;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: -10px;
+        background: var(--orange);
+        height: 100%;
+        width: 100%;
+        z-index: -3;
+        transition: 500ms ease-in-out;
+    } &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--neugray);
+        height: 100%;
+        width: 100%;
+        z-index: -3;
+        transition: 500ms ease-in-out;
+    } &:hover::before {
+        background: var(--neu);
+        transform: translate(-5px, 5px);
+    } &:hover::after {
+        background: var(--orange);
+        // transform: translate(5px, -5px);
+    }
 }
 
 // Header Component
@@ -38,33 +153,43 @@ header {
     grid-gap: 1em;
     padding: 1em 1em;
     font-size: 1.2em;
+    font-family: 'Heebo' !important;
+    box-shadow: 0 0 10px 1px var(--neu);
+    z-index: 1;
     i {
         color: white;
         padding: 1em;
         background: var(--orange);
         border-radius: 100px;
     } .quoteButton {
+        @include angledBoxes();
         font-size: 1.2em;
         margin-left: 3em;
+        position: relative;
         width: 15em;
         height: 3em;
-        background: var(--gray);
+        font-weight: 600;
         color: white;
-        border: 1px solid white;
-        border-radius: 3px;
+        border: 0px solid white;
+        cursor: pointer;
+        margin-right: 1em;
+        font-family: 'Heebo' !important;
+        transition: 500ms ease-in-out;
     } nav {
         display: flex;
         width: 100%;
         justify-content: space-evenly;
         align-items: center;
+        font-family: 'Heebo' !important;
         .topLogo {
             max-width: 200px;
         } a {
             color: white;
-            font-family: 'heebo';
+            font-family: 'Heebo' !important;
             text-decoration: none;
-            border-right: 1px solid #fff;
+            border-right: 1px solid var(--neu);
             padding-right: 2em;
+            font-family: 'Heebo' !important;
             &:nth-child(5) {
                 border-right: none;
             }
@@ -75,9 +200,28 @@ header {
 
 main {
     height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    font-family: 'Heebo' !important;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-family: 'Heebo' !important;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: var(--gray);
     .modal {
         .modalContent {
             padding: 5em;
@@ -85,6 +229,7 @@ main {
             border-radius: 25px;
             display: flex;
             align-items: center;
+            font-family: 'Heebo' !important;
             .modalInput {
                 display: none;
             }
@@ -95,6 +240,7 @@ main {
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
+        font-family: 'Heebo' !important;
         grid-gap: 0em;
         height: 100%;
         width: 100%;
@@ -110,26 +256,30 @@ main {
             padding: 1em 2em;
         } .modalText {
             padding: 1em;
+            font-family: 'Heebo' !important;
         } .modalInput {
             padding: 1em;
+            font-family: 'Heebo' !important;
         }
     } .openModal {
         width: 15em;
         height: 3em;
-        background: var(--gray);
+        @include angledBoxes();
+        font-family: 'Heebo' !important;
         color: white;
-        border: 2px solid white;
-        border-radius: 15px;
+        border: none;
+        outline: none;
         font-size: 2em;
+        font-weight: 600;
         cursor: pointer;
-        text-transform: uppercase;
         position: relative;
+        -webkit-transition: 500ms ease-in-out;
         transition: 500ms ease-in-out;
-        &:hover {
-            background: var(--orange);
-            color: white;
-            border: 2px solid var(--gray);
-        } // &::after {
+        &:active {
+            color: var(--neu);
+            text-transform: uppercase;
+            border: 0px solid var(--neu);
+        }// &::after {
         //     content: '';
         //     transform: scale(0,1);
         //     width: 100%;
@@ -150,9 +300,39 @@ main {
 }
 
 .dropZone {
-    padding: 10em;
-    background: transparent;
+    height: 15em;
+    width: 15em;
+    cursor: pointer;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    font-family: 'Heebo' !important;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    grid-gap: 0.7em;
+    font-style: italic;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 3em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
     color: white;
-    border: 5px solid white !important;
+    border: 0px solid white !important;
     outline: none;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px 1px var(--neu);
+}
+
+
+.neu {
+    font-family: 'Heebo' !important;
+    box-shadow: inset 0 0 20px 1px var(--neu);
 }

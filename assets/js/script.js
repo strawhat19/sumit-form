@@ -27,15 +27,15 @@ var dropZone = $(`.dropZone`);
 console.log(dropZone);
 
 // Window Events
-window.addEventListener(`dragenter`, event => {
-    event.preventDefault();
-    event.stopPropagation();
-})
+// window.addEventListener(`dragenter`, event => {
+//     event.preventDefault();
+//     // event.stopPropagation();
+// })
 
-window.addEventListener(`drop`, event => {
-    event.preventDefault();
-    event.stopPropagation();
-})
+// window.addEventListener(`drop`, event => {
+//     event.preventDefault();
+//     // event.stopPropagation();
+// })
 
 // On File Upload Button Click
 dropZone.on(`click`, event => {
@@ -43,23 +43,26 @@ dropZone.on(`click`, event => {
 })
 
 dropZone.on(`dragenter`, event => {
-    event.preventDefault();
-    event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
     dropZone.addClass(`draggedOver`);
 })
 
 dropZone.on(`dragleave`, event => {
-    event.preventDefault();
-    event.stopPropagation();
+    // event.preventDefault();
+    // event.stopPropagation();
     dropZone.removeClass(`draggedOver`);
 })
 
 dropZone.on(`drop`, event => {
     event.preventDefault();
-    event.stopPropagation();
+    // event.stopPropagation();
     dropZone.removeClass(`draggedOver`);
     dropZone.addClass(`dropped`);
-    actualInput.click();
+    console.log(event);
+    if (event.dataTransfer.files.length) {
+        console.log(event.dataTransfer.files)
+    }
 })
 
 // User File Handler
