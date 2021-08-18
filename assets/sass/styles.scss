@@ -3,6 +3,8 @@
 
 :root {
     --gray: #323232;
+    --orange: #f8a118;
+    --gradient: linear-gradient(var(--orange),var(--yellow));
 }
 
 
@@ -17,22 +19,122 @@ body {
     background: white;
     color: black;
     font-family: 'Heebo';
+    flex-direction: column;
 }
 
 // Header Component
 header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
     background: var(--gray);
-    nav {
+    grid-gap: 1em;
+    padding: 0 1em;
+    i {
+        color: white;
+        padding: 1em;
+        background: var(--orange);
+        border-radius: 100px;
+    } .quoteButton {
+        width: 15em;
+        height: 3em;
+        background: var(--gray);
+        color: white;
+        border: 1px solid white;
+        border-radius: 3px;
+    } nav {
         display: flex;
         width: 100%;
         justify-content: space-around;
-        a {
+        align-items: center;
+        .topLogo {
+            max-width: 200px;
+            padding: 1em 2em;
+        } a {
             color: white;
             font-family: 'heebo';
             text-decoration: none;
+            border-right: 1px solid #fff;
+            padding-right: 2em;
+            &:nth-child(5) {
+                border-right: none;
+            }
         }
+    }
+}
+
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal {
+        position: absolute;
+        color: #fff;
+        flex-direction: column;
+        grid-gap: 0em;
+        height: 80vh;
+        width: 90vw;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-radius: 15px;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        img {
+            max-width: 400px;
+            padding: 1em 2em;
+        } .modalText {
+            padding: 1em;
+        } .modalInput {
+            padding: 1em;
+        }
+    } .openModal {
+        width: 15em;
+        height: 3em;
+        background: var(--gray);
+        color: white;
+        border: 2px solid white;
+        border-radius: 15px;
+        font-size: 2em;
+        cursor: pointer;
+        text-transform: uppercase;
+        position: relative;
+        transition: 500ms ease-in-out;
+        &:hover {
+            background: var(--orange);
+            color: white;
+            border: 2px solid var(--gray);
+        } // &::after {
+        //     content: '';
+        //     transform: scale(0,1);
+        //     width: 100%;
+        //     height: 100%;
+        //     background: #fff;
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     border-radius: 15px;
+        //     transition: 500ms ease-in-out;
+        //     transform-origin: left;
+        //     z-index: -1;
+        // } &:hover::after {
+        //     border-radius: 15px;
+        //     transform: scale(1,1);
+        // }
     }
 }

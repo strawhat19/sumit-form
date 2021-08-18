@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
 :root {
   --gray: #323232;
+  --orange: #f8a118;
+  --gradient: linear-gradient(var(--orange),var(--yellow));
 }
 
 *, *::before, *::after {
@@ -17,6 +19,10 @@ body {
   background: white;
   color: black;
   font-family: 'Heebo';
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 header {
@@ -25,9 +31,30 @@ header {
   display: flex;
   width: 100%;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: var(--gray);
+  grid-gap: 1em;
+  padding: 0 1em;
+}
+
+header i {
+  color: white;
+  padding: 1em;
+  background: var(--orange);
+  border-radius: 100px;
+}
+
+header .quoteButton {
+  width: 15em;
+  height: 3em;
+  background: var(--gray);
+  color: white;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 header nav {
@@ -37,11 +64,96 @@ header nav {
   width: 100%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav .topLogo {
+  max-width: 200px;
+  padding: 1em 2em;
 }
 
 header nav a {
   color: white;
   font-family: 'heebo';
   text-decoration: none;
+  border-right: 1px solid #fff;
+  padding-right: 2em;
+}
+
+header nav a:nth-child(5) {
+  border-right: none;
+}
+
+main {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .modal {
+  position: absolute;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-gap: 0em;
+  height: 80vh;
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 15px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+main .modal img {
+  max-width: 400px;
+  padding: 1em 2em;
+}
+
+main .modal .modalText {
+  padding: 1em;
+}
+
+main .modal .modalInput {
+  padding: 1em;
+}
+
+main .openModal {
+  width: 15em;
+  height: 3em;
+  background: var(--gray);
+  color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+  font-size: 2em;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  -webkit-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+}
+
+main .openModal:hover {
+  background: var(--orange);
+  color: white;
+  border: 2px solid var(--gray);
 }
 /*# sourceMappingURL=styles.css.map */
