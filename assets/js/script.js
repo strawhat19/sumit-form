@@ -71,7 +71,7 @@ actualInput.change((event,fileList) => {
     // Generating Elements for Each File
     Object.values(fileList).forEach((file,index) => {
         console.log(file);
-        iconType(icon => {
+        iconType = (icon => {
             icon = file.type;
             switch (icon) {
                 case `audio/mp3`:
