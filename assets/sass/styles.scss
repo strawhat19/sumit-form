@@ -1,0 +1,38 @@
+// Import Heebo Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --gray: #323232;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    background: white;
+    color: black;
+    font-family: 'Heebo';
+}
+
+// Header Component
+header {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    background: var(--gray);
+    nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        a {
+            color: white;
+            font-family: 'heebo';
+            text-decoration: none;
+        }
+    }
+}

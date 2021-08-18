@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --gray: #323232;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: white;
+  color: black;
+  font-family: 'Heebo';
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: var(--gray);
+}
+
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header nav a {
+  color: white;
+  font-family: 'heebo';
+  text-decoration: none;
+}
+/*# sourceMappingURL=styles.css.map */
