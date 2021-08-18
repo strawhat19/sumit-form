@@ -33,9 +33,11 @@
     <main class="formArea">
         <button class="openModal">Click to Begin</button>
         <div class="modal">
-            <img src="./assets/sass/images/Sumit Trimmed Paths.svg" alt="Logo" class="topLogo">
-            <h1 class="modalText">Choose Files</h1>
-            <input class="modalInput" type="file" accept=".mp3"/>
+            <div class="modalContent">
+                <img src="./assets/sass/images/Sumit Trimmed Paths.svg" alt="Logo" class="topLogo">
+                <h1 class="modalText">Choose Files</h1>
+                <input class="modalInput" type="file" name="myFile[]" accept=".mp3,.mp4" multiple/>
+            </div>
         </div>
     </main>
 
