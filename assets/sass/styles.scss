@@ -1,6 +1,10 @@
 // Import Heebo Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+html {
+    overflow-x: hidden;
+}
+
 :root {
     --gray: #323232;
     --orange: #f8a118;
@@ -252,9 +256,8 @@ header {
     }
 }
 
-
 main {
-    height: 100vh;
+    height: 88.5vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -266,6 +269,10 @@ main {
     -ms-flex-align: center;
     align-items: center;
     background: var(--gray);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     .modal {
         .modalContent {
             background: var(--neugray);
@@ -409,4 +416,48 @@ main {
 .neu {
     font-family: 'Heebo' !important;
     box-shadow: inset 0 0 20px 1px var(--neu);
+}
+
+.introContent {
+    padding: 5em 5em 10em 0em;
+    background: url(./images/Hat-Girl.png), #9b9dad;
+    background-size: contain;
+    width: 550px;
+    height: 30%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: left;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+}
+
+.container {
+    max-width: 17em;
+    padding-left: 1em;
+    h4 {
+        font-size: 1.6em;
+    } p {
+        font-size: 1.2em;
+        padding-top: .5em;
+        padding-left: .5em;
+    }
+}
+
+main {
+    transform: scale(1.5);
+}
+
+main .modal {
+    transform: scale(0.6);
 }
