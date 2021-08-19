@@ -3,6 +3,14 @@ html {
   overflow-x: hidden;
 }
 
+::-moz-selection {
+  background: var(--orange);
+}
+
+::selection {
+  background: var(--orange);
+}
+
 :root {
   --gray: #323232;
   --orange: #f8a118;
@@ -208,6 +216,7 @@ header .quoteButton {
   margin-left: 3em;
   position: relative;
   width: 15em;
+  min-width: 270px;
   height: 3em;
   font-weight: 600;
   color: white;
@@ -226,6 +235,7 @@ header .quoteButton::before {
   background: var(--orange);
   height: 100%;
   width: 100%;
+  min-width: 100%;
   z-index: -3;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
@@ -239,6 +249,7 @@ header .quoteButton::after {
   background: var(--neugray);
   height: 100%;
   width: 100%;
+  min-width: 100%;
   z-index: -3;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
@@ -286,7 +297,7 @@ header nav a {
   font-family: 'Heebo' !important;
   text-decoration: none;
   border-right: 1px solid var(--neu);
-  padding-right: 2em;
+  padding-right: 4em;
   font-family: 'Heebo' !important;
 }
 
@@ -437,6 +448,7 @@ main .openModal::before {
   background: var(--orange);
   height: 100%;
   width: 100%;
+  min-width: 100%;
   z-index: -3;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
@@ -450,6 +462,7 @@ main .openModal::after {
   background: var(--neugray);
   height: 100%;
   width: 100%;
+  min-width: 100%;
   z-index: -3;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
@@ -550,6 +563,9 @@ main .openModal:active {
 
 .container h4 {
   font-size: 1.6em;
+  border-bottom: 3px solid #797a88;
+  padding-bottom: .5em;
+  margin-bottom: .2em;
 }
 
 .container p {

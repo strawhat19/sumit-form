@@ -43,22 +43,19 @@ dropZone.on(`click`, event => {
 })
 
 dropZone.on(`dragenter`, event => {
-    // event.preventDefault();
+    event.preventDefault();
     // event.stopPropagation();
-    dropZone.addClass(`draggedOver`);
 })
 
 dropZone.on(`dragleave`, event => {
-    // event.preventDefault();
-    // event.stopPropagation();
-    dropZone.removeClass(`draggedOver`);
-})
-
-dropZone.on(`drop`, event => {
     event.preventDefault();
     // event.stopPropagation();
-    dropZone.removeClass(`draggedOver`);
-    dropZone.addClass(`dropped`);
+})
+
+var dropZone = document.querySelector(`.dropZone`);
+dropZone.addEventListener(`drop`, event => {
+    event.preventDefault();
+    // event.stopPropagation();
     console.log(event);
     if (event.dataTransfer.files.length) {
         console.log(event.dataTransfer.files)

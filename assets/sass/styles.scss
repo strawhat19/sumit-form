@@ -5,6 +5,10 @@ html {
     overflow-x: hidden;
 }
 
+::selection {
+    background: var(--orange);
+}
+
 :root {
     --gray: #323232;
     --orange: #f8a118;
@@ -121,6 +125,7 @@ body {
         background: var(--orange);
         height: 100%;
         width: 100%;
+        min-width: 100%;
         z-index: -3;
         -webkit-transition: 500ms ease-in-out;
         transition: 500ms ease-in-out;
@@ -132,6 +137,7 @@ body {
         background: var(--neugray);
         height: 100%;
         width: 100%;
+        min-width: 100%;
         z-index: -3;
         -webkit-transition: 500ms ease-in-out;
         transition: 500ms ease-in-out;
@@ -226,6 +232,7 @@ header {
         margin-left: 3em;
         position: relative;
         width: 15em;
+        min-width: 270px;
         height: 3em;
         font-weight: 600;
         color: white;
@@ -247,7 +254,7 @@ header {
             font-family: 'Heebo' !important;
             text-decoration: none;
             border-right: 1px solid var(--neu);
-            padding-right: 2em;
+            padding-right: 4em;
             font-family: 'Heebo' !important;
             &:nth-child(5) {
                 border-right: none;
@@ -447,6 +454,9 @@ main {
     padding-left: 1em;
     h4 {
         font-size: 1.6em;
+        border-bottom: 3px solid #797a88;
+        padding-bottom: .5em;
+        margin-bottom: .2em;
     } p {
         font-size: 1.2em;
         padding-top: .5em;
