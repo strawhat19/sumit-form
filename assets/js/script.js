@@ -9,6 +9,39 @@ body.fadeIn(1000);
 var modal = $(`.modal`);
 modal.hide();
 
+// Intersection Observer
+// An API That Lets Us Detect When Elements Are In ViewPort
+let options = {
+  root: null,
+  // rootMargin: `-150px 0px`,
+  // threshhold: 0.05
+};
+
+// Declaring New Observer To Use for Observing All Elements with Class of .observe
+var observedItems = $(`.observe`);
+console.log(`Total Elements Being Observed: ${observedItems.length}`);
+
+let observer = new IntersectionObserver(inView, options);
+observedItems.each((index,element) => {
+    observer.observe(element);
+})
+
+// If The Element Is In The View Port
+function inView(entries) {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            $(entry.target).children().attr(`style,animation:none;`)
+            $(entry.target).fadeIn(5000);
+            $(entry.target).toggleClass(`inView`);
+            $(entry.target).removeClass(`notInView`);
+            $(entry.target).removeClass(`animationEnded`);
+        } else {
+            $(entry.target).toggleClass(`notInView`);
+            $(entry.target).removeClass(`inView`);
+        }
+    })
+}
+
 // Open Modal Animation
 var openModal = $(`.openModal`);
 openModal.on(`click`, event => {
@@ -23,31 +56,7 @@ modal.on(`click`, event => {
 
 // Modal Variables
 var actualInput = $(`.modalInput`);
-// var dropZone = $(`.dropZone`);
-// console.log(dropZone);
 
-// // Window Events
-// // window.addEventListener(`dragenter`, event => {
-// //     event.preventDefault();
-// //     // event.stopPropagation();
-// // })
-
-// // window.addEventListener(`drop`, event => {
-// //     event.preventDefault();
-// //     // event.stopPropagation();
-// // })
-
-
-// dropZone.on(`dragenter`, event => {
-    //     event.preventDefault();
-    //     // event.stopPropagation();
-    // })
-    
-    // dropZone.on(`dragleave`, event => {
-        //     event.preventDefault();
-        //     // event.stopPropagation();
-        // })
-        
 // On File Upload Button Click
 var dropZone = document.querySelector(`.dropZone`);
 dropZone.addEventListener(`click`, event => {
@@ -56,39 +65,40 @@ dropZone.addEventListener(`click`, event => {
 
 dropZone.addEventListener(`drop`, (event,fileList) => {
     event.preventDefault();
+    $(`.modalContent`).hide(500);
+    
     fileList = event.dataTransfer.files;
-    // event.stopPropagation();
-    // if (event.dataTransfer.files.length) {
-        console.log(event.dataTransfer.files);
-        console.log(fileList);
-        var modalContent = $(`<div class="modalContent"></div>`);
+    console.log(event.dataTransfer.files);
+    console.log(fileList);
+    var modalContent = $(`<div class="files"></div>`);
 
-        // Generating Elements for Each File
-        Object.values(fileList).forEach((file,index) => {
-            console.log(file);
-            iconType = (icon => {
-                icon = file.type;
-                switch (icon) {
-                    case `audio/mp3`:
-                    return icon = `<i class="fas fa-file-audio"></i>`;
-                    break;
-                    case `video/mp4`: 
-                    return icon = `<i class="fas fa-file-video"></i>`;
-                    break;
-                } // Generating Icon Based on Which File Type
-                return icon;
-            }) // Generating File Card Elements
-            var fileCard = $(`
-                <div class="fileCard">
-                    <div class="fileIcon">${iconType()}</div>
-                    <div class="fileName">${file.name}</div>
-                    <div class="fileType">${file.type}</div>
-                </div>
-            `);
-            modalContent.append(fileCard);
-        })
-        modal.append(modalContent);
-    // }
+    // Generating Elements for Each File
+    Object.values(fileList).forEach((file,index) => {
+        console.log(file);
+        iconType = (icon => {
+            icon = file.type;
+            switch (icon) {
+                case `audio/mp3`:
+                return icon = `<i class="fas fa-file-audio"></i>`;
+                break;
+                case `video/mp4`: 
+                return icon = `<i class="fas fa-file-video"></i>`;
+                break;
+                case `audio/mpeg`:
+                return icon = `<i class="fas fa-file-audio"></i>`;
+            } // Generating Icon Based on Which File Type
+            return icon;
+        }) // Generating File Card Elements
+        var fileCard = $(`
+            <div class="fileCard">
+                <div class="fileIcon">${iconType()}</div>
+                <div class="fileName">${file.name}</div>
+                <div class="fileType">${file.type}</div>
+            </div>
+        `);
+        modalContent.append(fileCard);
+    })
+    modal.append(modalContent);
 })
 
   dropZone.addEventListener("dragover", (e) => {
@@ -149,7 +159,7 @@ var actualInput = $(`.modalInput`);
 actualInput.change((event,fileList) => {
     fileList = event.target.files;
     console.log(fileList);
-    var modalContent = $(`<div class="modalContent"></div>`);
+    var modalContent = $(`<div class="files"></div>`);
 
     // Generating Elements for Each File
     Object.values(fileList).forEach((file,index) => {
@@ -167,7 +177,7 @@ actualInput.change((event,fileList) => {
             return icon;
         }) // Generating File Card Elements
         var fileCard = $(`
-            <div class="fileCard">
+            <div class="fileCard observe">
                 <div class="fileIcon">${iconType()}</div>
                 <div class="fileName">${file.name}</div>
                 <div class="fileType">${file.type}</div>

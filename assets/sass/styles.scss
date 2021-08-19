@@ -471,3 +471,113 @@ main {
 main .modal {
     transform: scale(0.6);
 }
+
+.files {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    grid-gap: 3em;
+}
+
+.filesSelected {
+    text-transform: capitalize;
+    font-size: .8em;
+}
+
+.fileCard {
+    background: var(--neugray);
+    padding: 3em;
+    border: none;
+    border-radius: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: 'Heebo' !important;
+    -webkit-transform: skewx(20deg);
+    transform: skewx(20deg);
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 30%;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: -12px;
+        background: var(--orange);
+        height: 100%;
+        width: 100%;
+        min-width: 100%;
+        z-index: -3;
+        -webkit-transition: 500ms ease-in-out;
+        transition: 500ms ease-in-out;
+    } &::after {
+        content: attr(data-definition);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--neugray);
+        height: 100%;
+        width: 100%;
+        min-width: 100%;
+        z-index: -3;
+        -webkit-transition: 500ms ease-in-out;
+        transition: 500ms ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// Observer
+.observe {
+    transition: 1000ms var(--transition);
+}
+
+.inView {
+    animation: fadeIn 1s var(--transition);
+    transform: translateX(0px);
+    transform-origin: center;
+}
+
+.observe.notInView {
+    opacity: 0;
+}
+
+.slide.notInView {
+    transform: translateX(-300px);
+}
+
+.slide.notInView:nth-child(even) {
+    transform: translateX(300px);
+}
+
+.notInView {
+    opacity: 0 !important;
+    /* animation: slideLeft 3s ease-in-out reverse; */
+}
+
+.notInView:nth-child(even) {
+    opacity: 0 !important;
+    /* animation: slideRight 3s ease-in-out reverse; */
+}
+
+.inView {
+    /* opacity: 0; */
+    animation: fadeIn 1s ease-in-out;
+    transform: translateX(0px);
+    transform-origin: center;
+}
+
+.inView:nth-child(even) {
+    opacity: 1;
+    transform: translateX(0px);
+}
