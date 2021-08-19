@@ -18,13 +18,6 @@ let options = {
 };
 
 // Declaring New Observer To Use for Observing All Elements with Class of .observe
-var observedItems = $(`.observe`);
-console.log(`Total Elements Being Observed: ${observedItems.length}`);
-
-let observer = new IntersectionObserver(inView, options);
-observedItems.each((index,element) => {
-    observer.observe(element);
-})
 
 // If The Element Is In The View Port
 function inView(entries) {
@@ -69,6 +62,13 @@ dropZone.addEventListener(`drop`, (event,fileList) => {
     
     fileList = event.dataTransfer.files;
     console.log(event.dataTransfer.files);
+    var observedItems = $(`.observe`);
+console.log(`Total Elements Being Observed: ${observedItems.length}`);
+
+let observer = new IntersectionObserver(inView, options);
+observedItems.each((index,element) => {
+    observer.observe(element);
+})
     console.log(fileList);
     var modalContent = $(`<div class="files"></div>`);
 
@@ -90,7 +90,7 @@ dropZone.addEventListener(`drop`, (event,fileList) => {
             return icon;
         }) // Generating File Card Elements
         var fileCard = $(`
-            <div class="fileCard">
+            <div class="fileCard observe">
                 <div class="fileIcon">${iconType()}</div>
                 <div class="fileName">${file.name}</div>
                 <div class="fileType">${file.type}</div>
@@ -159,6 +159,13 @@ var actualInput = $(`.modalInput`);
 actualInput.change((event,fileList) => {
     fileList = event.target.files;
     console.log(fileList);
+    var observedItems = $(`.observe`);
+console.log(`Total Elements Being Observed: ${observedItems.length}`);
+
+let observer = new IntersectionObserver(inView, options);
+observedItems.each((index,element) => {
+    observer.observe(element);
+})
     var modalContent = $(`<div class="files"></div>`);
 
     // Generating Elements for Each File

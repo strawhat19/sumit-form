@@ -602,6 +602,7 @@ main .modal {
 .fileCard {
   background: var(--neugray);
   padding: 3em;
+  font-style: italic;
   border: none;
   border-radius: 0px;
   display: -webkit-box;
@@ -619,6 +620,13 @@ main .modal {
   -ms-flex-direction: column;
   flex-direction: column;
   width: 30%;
+}
+
+.fileCard i {
+  font-style: italic;
+  font-size: 5em;
+  padding: .3em;
+  color: var(--orange);
 }
 
 .fileCard::before {
