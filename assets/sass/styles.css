@@ -349,7 +349,8 @@ main .modal {
 
 main .modal .modalContent {
   background: var(--neugray);
-  padding: 10em;
+  padding: 6em 10em 6em 6em;
+  grid-gap: 6em;
   border: none;
   border-radius: 0px;
   display: -webkit-box;
@@ -526,6 +527,16 @@ main .openModal:active {
           box-shadow: inset 0 0 20px 1px var(--gray);
 }
 
+.dropZone::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px dashed var(--orange);
+  height: 100%;
+  width: 100%;
+}
+
 .neu {
   font-family: 'Heebo' !important;
   -webkit-box-shadow: inset 0 0 20px 1px var(--neu);
@@ -574,16 +585,6 @@ main .openModal:active {
   padding-left: .5em;
 }
 
-main {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
-}
-
-main .modal {
-  -webkit-transform: scale(0.6);
-          transform: scale(0.6);
-}
-
 .files {
   width: 100%;
   display: -webkit-box;
@@ -592,6 +593,9 @@ main .modal {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   grid-gap: 3em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .filesSelected {
@@ -601,7 +605,7 @@ main .modal {
 
 .fileCard {
   background: var(--neugray);
-  padding: 3em;
+  padding: 2em 3em;
   font-style: italic;
   border: none;
   border-radius: 0px;
@@ -619,7 +623,7 @@ main .modal {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 30%;
+  width: 20%;
 }
 
 .fileCard i {
@@ -718,5 +722,117 @@ main .modal {
   opacity: 1;
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
+}
+
+@-webkit-keyframes slideRight {
+  0% {
+    -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes slideLeft {
+  0% {
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+.jquery-modal {
+  -webkit-animation: fadeIn 1000ms var(--transition);
+          animation: fadeIn 1000ms var(--transition);
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  -webkit-animation: fadeOut 1000ms var(--transition);
+          animation: fadeOut 1000ms var(--transition);
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -283,7 +283,8 @@ main {
     .modal {
         .modalContent {
             background: var(--neugray);
-            padding: 10em;
+            padding: 6em 10em 6em 6em;
+            grid-gap: 6em;
             border: none;
             border-radius: 0px;
             display: -webkit-box;
@@ -419,6 +420,16 @@ main {
     box-shadow: inset 0 0 20px 1px var(--gray);
 }
 
+.dropZone::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px dashed var(--orange);
+    height: 100%;
+    width: 100%;
+}
+
 
 .neu {
     font-family: 'Heebo' !important;
@@ -464,14 +475,6 @@ main {
     }
 }
 
-main {
-    transform: scale(1.5);
-}
-
-main .modal {
-    transform: scale(0.6);
-}
-
 .files {
     width: 100%;
     display: -webkit-box;
@@ -480,6 +483,7 @@ main .modal {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     grid-gap: 3em;
+    justify-content: center;
 }
 
 .filesSelected {
@@ -495,7 +499,7 @@ main .modal {
         color: var(--orange);
     }
     background: var(--neugray);
-    padding: 3em;
+    padding: 2em 3em;
     font-style: italic;
     border: none;
     border-radius: 0px;
@@ -513,7 +517,7 @@ main .modal {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 30%;
+    width: 20%;
     &::before {
         content: '';
         position: absolute;
@@ -642,4 +646,3 @@ main .modal {
         transform: rotate(360deg);
     }
 }
-
