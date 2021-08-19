@@ -160,6 +160,7 @@ actualInput.change((event,fileList) => {
     fileList = event.target.files;
     console.log(fileList);
     var observedItems = $(`.observe`);
+    $(`.modalContent`).hide(500);
 console.log(`Total Elements Being Observed: ${observedItems.length}`);
 
 let observer = new IntersectionObserver(inView, options);
@@ -174,13 +175,15 @@ observedItems.each((index,element) => {
         iconType = (icon => {
             icon = file.type;
             switch (icon) {
-                case `audio/mp3`:
-                return icon = `<i class="fas fa-file-audio"></i>`;
-                break;
-                case `video/mp4`: 
-                return icon = `<i class="fas fa-file-video"></i>`;
-                break;
-            } // Generating Icon Based on Which File Type
+              case `audio/mp3`:
+              return icon = `<i class="fas fa-file-audio"></i>`;
+              break;
+              case `video/mp4`: 
+              return icon = `<i class="fas fa-file-video"></i>`;
+              break;
+              case `audio/mpeg`:
+              return icon = `<i class="fas fa-file-audio"></i>`;
+          } // Generating Icon Based on Which File Type
             return icon;
         }) // Generating File Card Elements
         var fileCard = $(`

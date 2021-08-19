@@ -12,7 +12,7 @@ html {
 :root {
     --gray: #323232;
     --orange: #f8a118;
-    --gradient: linear-gradient(var(--orange),var(--yellow));
+    --gradient: linear-gradient(var(--orange) 50%,var(--yellow));
 
     --hue: 225;
     --saturation: 40;
@@ -241,25 +241,36 @@ header {
         margin-right: 1em;
         font-family: 'Heebo' !important;
         transition: 500ms ease-in-out;
+    }.logo {
+        padding-right: 3em;
     } nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         width: 100%;
-        justify-content: space-evenly;
+        -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         font-family: 'Heebo' !important;
-        .topLogo {
-            max-width: 200px;
-        } a {
+        grid-gap: 2em;
+        padding-left: 2em;
+         a {
             color: white;
             font-family: 'Heebo' !important;
             text-decoration: none;
             border-right: 1px solid var(--neu);
-            padding-right: 4em;
+            padding-right: 2em;
             font-family: 'Heebo' !important;
             &:nth-child(5) {
                 border-right: none;
             }
         }
+    }
+    .topLogo {
+        max-width: 200px;
     }
 }
 
@@ -320,6 +331,7 @@ main {
             }
         } 
         position: fixed;
+        top: 0;
         z-index: 10;
         color: #fff;
         -webkit-box-orient: vertical;
@@ -333,6 +345,8 @@ main {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
@@ -438,7 +452,8 @@ main {
 
 .introContent {
     padding: 5em 5em 10em 0em;
-    background: url(./images/Hat-Girl.png), #9b9dad;
+    background: url(./images/Hat-Girl.png),linear-gradient(var(--gray),var(--gray));
+    background-blend-mode: lighten;
     background-size: contain;
     width: 550px;
     height: 30%;
@@ -494,9 +509,11 @@ main {
 .fileCard {
     i {
         font-style: italic;
-        font-size: 5em;
+        font-size: 3em;
         padding: .3em;
-        color: var(--orange);
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     background: var(--neugray);
     padding: 2em 3em;

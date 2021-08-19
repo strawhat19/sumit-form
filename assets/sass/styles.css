@@ -14,7 +14,7 @@ html {
 :root {
   --gray: #323232;
   --orange: #f8a118;
-  --gradient: linear-gradient(var(--orange),var(--yellow));
+  --gradient: linear-gradient(var(--orange) 50%,var(--yellow));
   --hue: 225;
   --saturation: 40;
   --lightness: 65;
@@ -274,22 +274,24 @@ header .quoteButton:hover::after {
           transform: translate(-5px, 5px);
 }
 
+header .logo {
+  padding-right: 3em;
+}
+
 header nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: flex-start;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-family: 'Heebo' !important;
-}
-
-header nav .topLogo {
-  max-width: 200px;
+  grid-gap: 2em;
+  padding-left: 2em;
 }
 
 header nav a {
@@ -297,12 +299,16 @@ header nav a {
   font-family: 'Heebo' !important;
   text-decoration: none;
   border-right: 1px solid var(--neu);
-  padding-right: 4em;
+  padding-right: 2em;
   font-family: 'Heebo' !important;
 }
 
 header nav a:nth-child(5) {
   border-right: none;
+}
+
+header .topLogo {
+  max-width: 200px;
 }
 
 main {
@@ -326,6 +332,7 @@ main {
 
 main .modal {
   position: fixed;
+  top: 0;
   z-index: 10;
   color: #fff;
   -webkit-box-orient: vertical;
@@ -340,8 +347,8 @@ main .modal {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   padding-top: 4em;
@@ -545,7 +552,9 @@ main .openModal:active {
 
 .introContent {
   padding: 5em 5em 10em 0em;
-  background: url(./images/Hat-Girl.png), #9b9dad;
+  background: url(./images/Hat-Girl.png), -webkit-gradient(linear, left top, left bottom, from(var(--gray)), to(var(--gray)));
+  background: url(./images/Hat-Girl.png), linear-gradient(var(--gray), var(--gray));
+  background-blend-mode: lighten;
   background-size: contain;
   width: 550px;
   height: 30%;
@@ -628,9 +637,11 @@ main .openModal:active {
 
 .fileCard i {
   font-style: italic;
-  font-size: 5em;
+  font-size: 3em;
   padding: .3em;
-  color: var(--orange);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .fileCard::before {
