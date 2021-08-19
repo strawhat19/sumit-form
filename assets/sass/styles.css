@@ -87,7 +87,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   background: white;
-  color: black;
+  color: white;
   font-family: 'Heebo' !important;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -117,14 +117,7 @@ header {
 }
 
 header i {
-  color: white;
-  padding: 1em;
-  background: var(--orange);
-  border-radius: 100px;
-}
-
-header .quoteButton {
-  z-index: 5;
+  z-index: 1;
   background: #ffffff;
   font-weight: 600;
   font-style: italic;
@@ -136,6 +129,77 @@ header .quoteButton {
   top: -6px;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
+  color: white;
+  padding: 1em;
+  background: transparent;
+  border-radius: 100px;
+}
+
+header i::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: var(--orange);
+  height: 100%;
+  width: 100%;
+  z-index: -3;
+  -webkit-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+}
+
+header i::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  background: var(--neugray);
+  height: 100%;
+  width: 100%;
+  z-index: -3;
+  -webkit-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+}
+
+header i:hover::before {
+  background: var(--neu);
+  -webkit-transform: translate(-5px, 5px);
+          transform: translate(-5px, 5px);
+}
+
+header i:hover::after {
+  background: var(--orange);
+}
+
+header .fa-star-of-david:before, header .fa-flag-usa:before {
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-style: italic;
+}
+
+header .quoteButton {
+  z-index: 1;
+  background: none;
+  font-weight: 600;
+  font-style: italic;
+  border-radius: 0px;
+  text-transform: uppercase;
+  -webkit-transform: skewx(20deg);
+  transform: skewx(20deg);
+  cursor: pointer;
+  top: -6px;
+  -webkit-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+  -webkit-transform-origin: center;
+          transform-origin: center;
   font-size: 1.2em;
   margin-left: 3em;
   position: relative;
@@ -153,8 +217,8 @@ header .quoteButton {
 header .quoteButton::before {
   content: '';
   position: absolute;
-  top: 10px;
-  left: -10px;
+  top: 12px;
+  left: -12px;
   background: var(--orange);
   height: 100%;
   width: 100%;
@@ -164,7 +228,7 @@ header .quoteButton::before {
 }
 
 header .quoteButton::after {
-  content: '';
+  content: attr(data-definition);
   position: absolute;
   top: 0;
   left: 0;
@@ -174,16 +238,25 @@ header .quoteButton::after {
   z-index: -3;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header .quoteButton:hover::before {
   background: var(--neu);
-  -webkit-transform: translate(-5px, 5px);
-          transform: translate(-5px, 5px);
 }
 
 header .quoteButton:hover::after {
   background: var(--orange);
+  -webkit-transform: translate(-5px, 5px);
+          transform: translate(-5px, 5px);
 }
 
 header nav {
@@ -229,22 +302,12 @@ main {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: 'Heebo' !important;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   background: var(--gray);
 }
 
 main .modal {
   position: fixed;
+  z-index: 10;
   color: #fff;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -266,16 +329,42 @@ main .modal {
 }
 
 main .modal .modalContent {
-  padding: 5em;
-  border: 5px solid #fff;
-  border-radius: 25px;
+  background: var(--neugray);
+  padding: 10em;
+  border: none;
+  border-radius: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-family: 'Heebo' !important;
+  -webkit-transform: skewx(20deg);
+  transform: skewx(20deg);
+  position: relative;
+}
+
+main .modal .modalContent::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--orange);
+  top: 20px;
+  left: -20px;
+  position: absolute;
+  z-index: -1;
+}
+
+main .modal .modalContent::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--neugray);
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 main .modal .modalContent .modalInput {
@@ -285,6 +374,13 @@ main .modal .modalContent .modalInput {
 main .modal img {
   max-width: 400px;
   padding: 1em 2em;
+  -webkit-transform: skewx(-20deg);
+          transform: skewx(-20deg);
+}
+
+main .modal .fileInputArea {
+  -webkit-transform: skewx(-20deg);
+          transform: skewx(-20deg);
 }
 
 main .modal .modalText {
@@ -300,8 +396,8 @@ main .modal .modalInput {
 main .openModal {
   width: 15em;
   height: 3em;
-  z-index: 5;
-  background: #ffffff;
+  z-index: 1;
+  background: none;
   font-weight: 600;
   font-style: italic;
   border-radius: 0px;
@@ -311,6 +407,8 @@ main .openModal {
   cursor: pointer;
   top: -6px;
   transition: 500ms ease-in-out;
+  -webkit-transform-origin: center;
+          transform-origin: center;
   font-family: 'Heebo' !important;
   color: white;
   border: none;
@@ -326,8 +424,8 @@ main .openModal {
 main .openModal::before {
   content: '';
   position: absolute;
-  top: 10px;
-  left: -10px;
+  top: 12px;
+  left: -12px;
   background: var(--orange);
   height: 100%;
   width: 100%;
@@ -337,7 +435,7 @@ main .openModal::before {
 }
 
 main .openModal::after {
-  content: '';
+  content: attr(data-definition);
   position: absolute;
   top: 0;
   left: 0;
@@ -347,16 +445,25 @@ main .openModal::after {
   z-index: -3;
   -webkit-transition: 500ms ease-in-out;
   transition: 500ms ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main .openModal:hover::before {
   background: var(--neu);
-  -webkit-transform: translate(-5px, 5px);
-          transform: translate(-5px, 5px);
 }
 
 main .openModal:hover::after {
   background: var(--orange);
+  -webkit-transform: translate(-5px, 5px);
+          transform: translate(-5px, 5px);
 }
 
 main .openModal:active {
@@ -391,11 +498,11 @@ main .openModal:active {
   -ms-flex-align: center;
   align-items: center;
   color: white;
-  border: 0px solid white !important;
   outline: none;
-  border-radius: 15px;
-  -webkit-box-shadow: inset 0 0 20px 1px var(--neu);
-          box-shadow: inset 0 0 20px 1px var(--neu);
+  border-radius: 10px;
+  border: 4px dashed #ffffff;
+  -webkit-box-shadow: inset 0 0 20px 1px var(--gray);
+          box-shadow: inset 0 0 20px 1px var(--gray);
 }
 
 .neu {

@@ -13,12 +13,12 @@ modal.hide();
 var openModal = $(`.openModal`);
 openModal.on(`click`, event => {
     modal.addClass(`active`);
-    modal.fadeIn(1000);
+    modal.fadeIn(500);
 })
 
 // If User Clicks Out Of Modal
 modal.on(`click`, event => {
-    if ($(event.target).hasClass(`active`)) modal.fadeOut(1000)
+    if ($(event.target).hasClass(`active`)) modal.fadeOut(500)
 })
 
 // Modal Variables
